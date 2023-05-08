@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.sass'
 import { upload, download, add, read, finalData} from '../../lib/firebase'
 import { useState, useRef, useEffect } from 'react'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
   let posts = await read()
@@ -101,6 +102,8 @@ export default function Home({posts}) {
           { href ?  <a href={href}> click to download </a> : <a> </a>}
 
         </p>
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5756583337185960"
+     crossorigin="anonymous" />
       </main>
     </>
   )
