@@ -96,12 +96,12 @@ export default function Home({posts}) {
         <section className={styles.form}>
           <input type="text"  name='search'className={styles.input} placeholder='Search . . .' onChange={ search }/>
           <ul>
-          { results.map( ({ value }) => {
+          {/* { results.map( ({ value }) => {
             return (
                 <li> {value} </li>
             )} )
 
-          }
+          } */}
           </ul>
           <input type="file" name='upload' ref={fileRef} style={{display : "none"}} className={styles.input} value=''  onChange={uploadFile} />
           <input type="button" value="Download" className={ !isUrl ? styles.buttonA : styles.buttonB} onClick={() => downloadRef.current.click()}/>
