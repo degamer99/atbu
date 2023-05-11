@@ -110,7 +110,7 @@ export default function Home({posts}) {
           </datalist>
             
           <input type="file" name='upload' ref={fileRef} style={{display : "none"}} className={styles.input} value=''  onChange={uploadFile} />
-          <input type="button" value="Download" className={ !isUrl ? styles.buttonA : styles.buttonB} onClick={ () => downloadRef.current.click()} inactive/>
+          <input type="button" value="Download" className={ !isUrl ? styles.buttonA : styles.buttonB} onClick={ () => downloadRef.current.click()}/>
           <a href={url} ref={downloadRef} hidden > go somewhere</a>
           <div>
             <span className='styles.splice'>or</span>
