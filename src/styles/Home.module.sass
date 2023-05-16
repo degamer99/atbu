@@ -1,50 +1,87 @@
 .main
   color: black
-
-.input
-  margin-inline: auto 
-  display: block
-  width: min(300px,90vw)
-  border: none
-  outline: none
-  border-radius: 5px
-  padding: 8px 12px
+  
+.search
   color: #ccc
-  &:focus
-    color: #222
-    font-weight: bold
-    letter-spacing: .75px
-
-.buttonA
-  margin-inline: auto 
-  border: none
   outline: none
-  border-radius: 5px
-  padding: 8px 12px
-  display: block
-  font-size: 1.2em
-  width: 100%
-  background-color: #fefefe
-  color: #444
-  font-weight: bold 
-  filter: blur(.5px)
+  border: 1px solid #dfe1e5
+  border-radius: 1rem
+  background-color: inherit 
+  padding: .7rem .8rem
+  margin-bottom: 1rem
 
+
+  &:hover
+    box-shadow: 0 1px 6px rgba(32,33,36,.28)
+    border-color: rgba(223,225,229,0)
+     
+
+  div
+    display: flex
+    margin-inline: auto   
+    align-content: center
+
+    input
+      outline: none
+      border: none
+      display: block
+      padding: 8px 12px 
+      width: calc( 100% - 20px )
+
+      &:focus
+        color: #222
+        font-weight: bold
+        letter-spacing: .75px
+
+
+
+    svg
+      width: 25px
+      color: #55555577
+
+  ul
+    list-style-type: none 
+    color: #000
+    text-align: left
+
+.results
+ 
+ 
+  li
+    display: flex
+    flex-direction: row
+    align-content: center
+    gap: .3rem
+    padding: .5rem
+    padding-top: 1rem
+    
+    border-radius: 5px
+
+    &:hover
+      background-color: #ccccccaa
+      cursor: pointer
+
+    &:first-child
+      border-top: 1px solid #ccc
+
+    svg
+      width: 24px
 
 .buttonB
-  margin-inline: auto 
   border: none
   outline: none
   border-radius: 5px
   padding: 8px 12px
   display: block
   font-size: 1.2em
-  width: 100%
+  margin-inline: auto
+  width: min( 90vw, 200px)
   background-color: #111
   color: #eee
   font-weight: bold 
+  margin-bottom: 8rem
 
 .buttonLoad
-  margin-inline: auto 
   border: none
   outline: none
   border-radius: 5px
@@ -70,7 +107,7 @@
   flex-direction: column
   gap: 1rem 
   text-align: center
-  width: min(300px,90vw)
+  width: min(90vw, 500px)
 
 
 .splice:before
