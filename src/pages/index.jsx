@@ -3,8 +3,10 @@ import Head from 'next/head'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.sass'
-import { upload, download, add, read, finalData} from '../../lib/firebase'
+import { upload, read, pdfRef, add } from '../../lib/firebase'
 import { useState, useRef, useEffect } from 'react'
+
+import { getStorage, ref, uploadBytes, getDownloadURL, get} from "firebase/storage";
 
 export async function getServerSideProps() {
   // Call an external API endpoint to get posts.
@@ -32,6 +34,7 @@ export default function Home({posts}) {
   const [isUrl, setisUrl] = useState(false)
   const [uploadState, setUploadState] = useState(false)
   
+
   // let data = await read()
 
 
@@ -57,7 +60,20 @@ export default function Home({posts}) {
       }
 
       if( found != true ){
-        upload(e.target.files[0], name.toUpperCase()).then(() => setUploadState( x => !x));
+
+        const upload = async (file, name) => {
+         uploadBytes(ref(pdfRef, name ), file).then( async (snapshot) => {
+     
+         console.log('Uploaded a blob or file!');
+         let link = await getDownloadURL(ref(pdfRef, name ))
+         console.log(link)
+         await add(name, link).then(() => setUploadState( x => !x));
+       });
+        }
+        upload(e.target.files[0], name.toUpperCase());
+      //  done.then(() => setUploadState( x => !x));
+
+
       }else{
       console.log("already uploaded")
       setUploadState( x => !x)
